@@ -2,7 +2,7 @@ import { Outlet } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import AppBar from "../AppBar";
 
-const Layout = () => {
+export default function Layout() {
   return (
     <>
       <AppBar />
@@ -10,5 +10,4 @@ const Layout = () => {
       <Outlet />
     </>
   );
-};
-export default Layout;
+}
