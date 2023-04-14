@@ -81,7 +81,7 @@ export default function MenuAppBar() {
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-            <Avatar alt="user photo" src="./public/ava.png" />
+            <Avatar alt="user photo" src="/public/ava.png" />
           </Box>
         </Toolbar>
       </Container>

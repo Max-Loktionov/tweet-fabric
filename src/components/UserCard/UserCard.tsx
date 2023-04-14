@@ -1,44 +1,39 @@
 // import { Link, useLocation } from "react-router-dom";
+import { useState } from "react";
+import { useUpdateFollowingMutation } from "../../redux/tweetsApi";
 import noImage from "../../../public/ava.png";
+import formattedNumber from "../../helpers/formatted";
+import { IUser } from "../../assets/interfaces";
 import { Box, Text, Poster } from "./UserCard.styled";
 
-export interface IUser {
-  id: number;
-  user: string;
-  avatar: string | null;
-  tweets: number;
-  followers: number;
-}
+// https://6439993fbd3623f1b9a428c7.mockapi.io/api/v1/:endpoint
 
-const users: IUser[] = [
-  {
-    id: 1,
-    user: "Elon Reeve Musk",
-    tweets: 777,
-    followers: 100500,
-    avatar: "url.jpg",
-  },
-];
+export default function UserCard({ id, user, tweets, followers, avatar, followed }: IUser) {
+  const [updateFollowing] = useUpdateFollowingMutation();
+  const [isFollowing, setFollow] = useState(false);
+  const shownFollowers = formattedNumber(followers);
 
-const { user, tweets, followers, avatar } = users[0];
+  const handleClickFollow = async () => {
+    // if (!follow) return ++followers;
+    if (isFollowing) {
+      // deleteFollow(id)
 
-export default function UserCard() {
-  //   const location = useLocation();
+      return setFollow(false);
+    }
+    // addFollow(id)
+    await updateFollowing(id);
+    return setFollow(true);
+  };
+
   return (
     <>
       {/* <Link to={`/${id}`} state={{ from: location }}> */}
       <Box>
-        <div>
-          {avatar ? (
-            <Poster src={`${avatar}`} alt={user} />
-          ) : (
-            <Poster src={noImage} alt={user} />
-          )}
-        </div>
+        <div>{avatar ? <Poster src={`${avatar}`} alt={user} /> : <Poster src={noImage} alt={user} />}</div>
         <Text>{tweets}</Text>
-        <Text>{followers}</Text>
-        <button type="button" onClick={() => console.log("follow")}>
-          Follow
+        <Text>{shownFollowers}</Text>
+        <button type="button" onClick={handleClickFollow}>
+          {followed ? "Following" : "Follow"}
         </button>
       </Box>
       {/* </Link> */}
