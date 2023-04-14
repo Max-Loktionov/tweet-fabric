@@ -21,8 +21,8 @@ export const tweetsApi = createApi({
         console.log("objApi", object);
         return {
           url: `/user/${object.id}`,
-          method: "PATCH",
-          body: object.user,
+          method: "PUT",
+          body: object,
         };
       },
       invalidatesTags: ["Tweets"],
