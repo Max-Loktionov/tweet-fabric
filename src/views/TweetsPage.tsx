@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
+
 import { useGetTweetsQuery } from "../redux/tweetsApi";
 import { IUser } from "../assets/interfaces";
 import UserCard from "../components/UserCard";
@@ -83,7 +84,7 @@ export default function TweetsPage() {
         </Grid>
       </Box> */}
       <Box sx={{ my: "32px" }}>
-        <Grid container rowSpacing={1} justifyContent="center" columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+        <Grid container rowSpacing={2} justifyContent="center" columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
           {users &&
             users.map((userItem: IUser) => (
               <Grid item xs={8} sm={6} md={4} justifyContent="center" key={userItem.id}>
@@ -102,7 +103,8 @@ export default function TweetsPage() {
       {allItems.length > ITEMS_PER_PAGE && (
         <Button
           variant="contained"
-          color="secondary"
+          color="primary"
+          size="large"
           sx={{ mx: "auto", display: "block" }}
           onClick={loadMoreBtn}
           disabled={Boolean(endIndex >= allItems?.length)}
@@ -110,9 +112,9 @@ export default function TweetsPage() {
           Load more
         </Button>
       )}
-      <div>
+      <Box component="span" sx={{ p: 2, m: 8, backgroundColor: "gray", display: "inline-block" }}>
         <NavLink to={"/"}>Home</NavLink>
-      </div>
+      </Box>
     </>
   );
 }

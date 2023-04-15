@@ -5,6 +5,7 @@ import noImage from "../../../public/ava.png";
 import formattedNumber from "../../helpers/formatted";
 import { IUser } from "../../assets/interfaces";
 import { Box, CircularProgress, Button } from "@mui/material";
+import picto from "../../img/picto.png";
 import { Text, Poster } from "./UserCard.styled";
 import * as S from "./styles";
 
@@ -44,17 +45,19 @@ export default function UserCard({ id, user, tweets, followers, avatar, followed
   return (
     <>
       <S.CardWrapper>
-        <div>{avatar ? <Poster src={`${avatar}`} alt={user} /> : <Poster src={noImage} alt={user} />}</div>
-        <Text>{tweets}</Text>
-        <Text>{shownFollowers}</Text>
+        <S.ImgContainer />
+        <S.Line />
+        <S.ImgWrapper>{avatar ? <S.Poster src={`${avatar}`} alt={user} /> : <S.Poster src={noImage} alt={user} />}</S.ImgWrapper>
+        <S.Text>{tweets} tweets</S.Text>
+        <S.Text sx={{ mb: "22px" }}>{shownFollowers} followers</S.Text>
         {followed ? (
-          <Button variant="contained" sx={{ mx: "auto", display: "block" }} color="success" onClick={handleClickFollow}>
+          <S.ButtonMain sx={{ backgroundColor: "#5CD3A8" }} onClick={handleClickFollow}>
             {isLoading ? <CircularProgress color="error" size={20} /> : "Following"}
-          </Button>
+          </S.ButtonMain>
         ) : (
-          <Button variant="contained" color="info" sx={{ mx: "auto", display: "block" }} onClick={handleClickFollow}>
+          <S.ButtonMain variant="contained" onClick={handleClickFollow}>
             {isLoading ? <CircularProgress color="error" size={20} /> : "Follow"}
-          </Button>
+          </S.ButtonMain>
         )}
       </S.CardWrapper>
     </>

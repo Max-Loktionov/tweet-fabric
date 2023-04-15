@@ -28,10 +28,10 @@ export const Text = styled.p`
 `;
 
 export const Poster = styled.img`
-  width: 216px;
+  /* width: 216px;
   margin-left: auto;
   margin-right: auto;
   object-fit: cover;
   border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
+  border-top-right-radius: 8px; */
 `;
