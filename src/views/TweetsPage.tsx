@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { useGetTweetsQuery } from "../redux/tweetsApi";
 import { IUser } from "../assets/interfaces";
 import UserCard from "../components/UserCard";
-import { Button, Box, Paper } from "@mui/material";
+import { Button, Box, Paper, Grid, Typography, CircularProgress } from "@mui/material";
 
 // export interface IUser {
 //   id: number;
@@ -13,7 +13,13 @@ import { Button, Box, Paper } from "@mui/material";
 //   followers: number;
 //   isFollowing: boolean;
 // }
-
+// const Item = styled(Paper)(({ theme }) => ({
+//   // backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
+//   // ...theme.typography.body2,
+//   padding: theme.spacing(1),
+//   textAlign: "center",
+//   // color: theme.palette.text.secondary,
+// }));
 // const users: IUser[] = [
 //   {
 //     id: 1,
@@ -35,7 +41,7 @@ import { Button, Box, Paper } from "@mui/material";
 
 export default function TweetsPage() {
   const ITEMS_PER_PAGE = 10; // Number of items to show per page
-  const { data: users } = useGetTweetsQuery();
+  const { data: users, isLoading } = useGetTweetsQuery();
 
   const [itemsPerPage] = useState(ITEMS_PER_PAGE);
   const [currentPage, setCurrentPage] = useState(1);
@@ -66,32 +72,41 @@ export default function TweetsPage() {
 
   return (
     <>
-      <div>TweetsPage</div>
-      <Box
-        sx={{
-          p: 2,
-          display: "grid",
-          gridTemplateColumns: { md: "1fr 1fr" },
-          gap: 2,
-        }}
-      >
-        {users &&
-          users.map((userItem: IUser) => (
-            <Paper key={userItem.id}>
-              <UserCard
-                id={userItem.id}
-                user={userItem.user}
-                tweets={userItem.tweets}
-                followers={userItem.followers}
-                avatar={userItem.avatar}
-                followed={userItem.followed}
-              />
-            </Paper>
-          ))}
+      <Paper elevation={2}>
+        <Typography variant="h4" textAlign="center" fontStyle="italic">
+          {isLoading ? <CircularProgress color="inherit" size={20} /> : "TweetsPage"}
+        </Typography>
+      </Paper>
+      {/* <Box sx={{ width: "80%" }}>
+        <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+          <Grid item xs={6}></Grid>
+        </Grid>
+      </Box> */}
+      <Box sx={{ my: "32px" }}>
+        <Grid container rowSpacing={1} justifyContent="center" columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+          {users &&
+            users.map((userItem: IUser) => (
+              <Grid item xs={8} sm={6} md={4} justifyContent="center" key={userItem.id}>
+                <UserCard
+                  id={userItem.id}
+                  user={userItem.user}
+                  tweets={userItem.tweets}
+                  followers={userItem.followers}
+                  avatar={userItem.avatar}
+                  followed={userItem.followed}
+                />
+              </Grid>
+            ))}
+        </Grid>
       </Box>
-
       {allItems.length > ITEMS_PER_PAGE && (
-        <Button variant="contained" color="secondary" onClick={loadMoreBtn} disabled={Boolean(endIndex >= allItems?.length)}>
+        <Button
+          variant="contained"
+          color="secondary"
+          sx={{ mx: "auto", display: "block" }}
+          onClick={loadMoreBtn}
+          disabled={Boolean(endIndex >= allItems?.length)}
+        >
           Load more
         </Button>
       )}
