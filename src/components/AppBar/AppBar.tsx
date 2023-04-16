@@ -3,6 +3,7 @@ import { Container, Box, Typography } from "@mui/material";
 import { IconButton, Toolbar } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import { MenuItem, Menu, AppBar, Avatar } from "@mui/material";
+import ava from "../../img/ava.png";
 import { NAVLink } from "./AppBar.styled";
 
 export default function MenuAppBar() {
@@ -81,7 +82,7 @@ export default function MenuAppBar() {
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-            <Avatar alt="user photo" src="/public/ava.png" />
+            <Avatar alt="user photo" src={ava} />
           </Box>
         </Toolbar>
       </Container>

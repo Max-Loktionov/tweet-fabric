@@ -1,11 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { NavLink } from "react-router-dom";
 
 import { useGetTweetsQuery } from "../redux/tweetsApi";
 import { IUser } from "../assets/interfaces";
 import UserCard from "../components/UserCard";
-import { Button, Box, Paper, Grid, Typography, CircularProgress } from "@mui/material";
-
+import { Button, Box, Paper, Grid, Typography, CircularProgress, Link, IconButton } from "@mui/material";
+import HomeIcon from "@mui/icons-material/Home";
 // export interface IUser {
 //   id: number;
 //   user: string;
@@ -41,17 +41,33 @@ import { Button, Box, Paper, Grid, Typography, CircularProgress } from "@mui/mat
 // ];
 
 export default function TweetsPage() {
-  const ITEMS_PER_PAGE = 10; // Number of items to show per page
+  const ITEMS_PER_PAGE = 12; // Number of items to show per page
   const { data: users, isLoading } = useGetTweetsQuery();
 
   const [itemsPerPage] = useState(ITEMS_PER_PAGE);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsToShow, setItemsToShow] = useState<IUser[]>([]);
   const [allItems, setAllItems] = useState<IUser[] | undefined>([]);
+  // const [sortedItems, setSorted] = useState<IUser[] | undefined>(allItems);
 
   useEffect(() => {
     setAllItems(users);
   }, [users]);
+  // if (users) {
+  //   const sorter = users?.sort((u, y) => y.followers - u.followers);
+  //   console.log("sort", sorter);
+  // }
+
+  // useEffect(() => {
+  //   setSorted;
+  // }, [allItems]);
+
+  const sortedUserCards: IUser[] | undefined = useMemo(() => {
+    const sortedCards: IUser[] | undefined = allItems?.slice();
+    sortedCards?.sort((a, b) => a.user.localeCompare(b.user));
+    console.log("sorted users", sortedCards);
+    return sortedCards;
+  }, [allItems]);
 
   // slice the items array to show only the items for the current page
   const startIndex = (currentPage - 1) * itemsPerPage;
@@ -60,7 +76,10 @@ export default function TweetsPage() {
   useEffect(() => {
     const items = allItems?.slice(startIndex, endIndex);
     if (!items) return;
-    setItemsToShow((prevItems) => [...prevItems, ...items]);
+    setItemsToShow((prevItems) => {
+      items !== prevItems;
+      return [...prevItems, ...items];
+    });
   }, [allItems, itemsPerPage, currentPage, startIndex, endIndex]);
 
   const loadMoreBtn = () => {
@@ -78,15 +97,10 @@ export default function TweetsPage() {
           {isLoading ? <CircularProgress color="inherit" size={20} /> : "TweetsPage"}
         </Typography>
       </Paper>
-      {/* <Box sx={{ width: "80%" }}>
-        <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-          <Grid item xs={6}></Grid>
-        </Grid>
-      </Box> */}
       <Box sx={{ my: "32px" }}>
         <Grid container rowSpacing={2} justifyContent="center" columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
           {users &&
-            users.map((userItem: IUser) => (
+            itemsToShow.map((userItem: IUser) => (
               <Grid item xs={8} sm={6} md={4} justifyContent="center" key={userItem.id}>
                 <UserCard
                   id={userItem.id}
@@ -103,7 +117,7 @@ export default function TweetsPage() {
       {allItems.length > ITEMS_PER_PAGE && (
         <Button
           variant="contained"
-          color="primary"
+          color="success"
           size="large"
           sx={{ mx: "auto", display: "block" }}
           onClick={loadMoreBtn}
@@ -112,8 +126,11 @@ export default function TweetsPage() {
           Load more
         </Button>
       )}
-      <Box component="span" sx={{ p: 2, m: 8, backgroundColor: "gray", display: "inline-block" }}>
-        <NavLink to={"/"}>Home</NavLink>
+
+      <Box component="span" sx={{ p: 2, m: 8, backgroundColor: "gray", outline: "1px solid #FDD835", display: "inline-block" }}>
+        <NavLink to={"/"}>
+          <HomeIcon fontSize="large" color="secondary" />
+        </NavLink>
       </Box>
     </>
   );

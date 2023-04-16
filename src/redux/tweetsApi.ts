@@ -18,7 +18,6 @@ export const tweetsApi = createApi({
     }),
     updateFollowing: builder.mutation({
       query: (object) => {
-        console.log("objApi", object);
         return {
           url: `/user/${object.id}`,
           method: "PUT",
