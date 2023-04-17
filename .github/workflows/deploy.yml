@@ -1,23 +1,31 @@
-name: Build and deploy to GitHub Pages
+name: Update Main Version
+run-name: Move ${{ github.event.inputs.major_version }} to ${{ github.event.inputs.target }}
 
 on:
-  push:
-    branches: [main]
+  workflow_dispatch:
+    inputs:
+      target:
+        description: The tag or reference to use
+        required: true
+      major_version:
+        type: choice
+        description: The major version to update
+        options:
+          - v3
+          - v2
 
 jobs:
-  build-and-deploy:
+  tag:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout 🛎️
-        uses: actions/checkout@v2.3.1
-
-      - name: Install, lint, build 🔧
-        run: |
-          npm install
-          npm run lint:js
-          npm run build
-      - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@4.1.0
+      - uses: actions/checkout@v3
         with:
-          branch: gh-pages
-          folder: build
+          fetch-depth: 0
+      - name: Git config
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+      - name: Tag new target
+        run: git tag -f ${{ github.event.inputs.major_version }} ${{ github.event.inputs.target }}
+      - name: Push new tag
+        run: git push origin ${{ github.event.inputs.major_version }} --force
