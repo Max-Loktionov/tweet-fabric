@@ -1,4 +1,4 @@
-import Box from "@mui/material/Box";
+import { Box } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { changeFilter, getFiltred } from "../../redux/filterSlice";
 

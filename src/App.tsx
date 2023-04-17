@@ -1,8 +1,8 @@
 import { lazy, Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
-import { Box, LinearProgress } from "@mui/material";
 import "./App.css";
+import { Box, LinearProgress } from "@mui/material";
 
 const HomePage = lazy(() => import("./views/HomePage"));
 const TweetsPage = lazy(() => import("./views/TweetsPage"));
@@ -20,10 +20,9 @@ export default function App() {
         <Routes>
           <Route path="/tweet-fabric/" element={<Layout />}>
             <Route index element={<HomePage />} />
-            <Route path="/tweets" element={<TweetsPage />} />
-
-            <Route path="*" element={<HomePage />} />
+            <Route path="/tweet-fabric/tweets" element={<TweetsPage />} />
           </Route>
+          <Route path="*" element={<HomePage />} />
         </Routes>
       </Suspense>
     </div>

@@ -1,9 +1,9 @@
-import { Box, Card, styled, Typography, Button } from "@mui/material";
-import picto from "../../img/picto@2x.png";
-
+import { styled } from "@mui/material";
+import { Box, Card, Typography, Button } from "@mui/material";
+import picto from "../../img/picto.png";
 
 export const CardWrapper = styled(Card)(() => ({
-   position: "relative",
+  position: "relative",
   textAlign: "center",
   background: "linear-gradient(114.99deg, #471CA9 -0.99%, #5736A3 54.28%, #4B2A99 78.99%)",
   height: "404px",
