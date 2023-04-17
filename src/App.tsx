@@ -7,7 +7,7 @@ import "./App.css";
 const HomePage = lazy(() => import("./views/HomePage"));
 const TweetsPage = lazy(() => import("./views/TweetsPage"));
 
-function App() {
+export default function App() {
   return (
     <div className="App">
       <Suspense
@@ -29,5 +29,3 @@ function App() {
     </div>
   );
 }
-
-export default App;

@@ -1,10 +1,9 @@
 import { Box, Card, styled, Typography, Button } from "@mui/material";
 import picto from "../../img/picto@2x.png";
 
-export const CardWrapper = styled(Card)(({ theme }) => ({
-  //   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
 
-  position: "relative",
+export const CardWrapper = styled(Card)(() => ({
+   position: "relative",
   textAlign: "center",
   background: "linear-gradient(114.99deg, #471CA9 -0.99%, #5736A3 54.28%, #4B2A99 78.99%)",
   height: "404px",
@@ -15,6 +14,12 @@ export const CardWrapper = styled(Card)(({ theme }) => ({
   borderRadius: "20px",
   boxShadow: " -2.5777px 6.87386px 20.6216px rgba(0, 0, 0, 0.23)",
 }));
+
+export const Logo = styled("img")`
+  position: absolute;
+  top: 20px;
+  left: 20px;
+`;
 
 export const ImgWrapper = styled(Box)(() => ({
   position: "absolute",

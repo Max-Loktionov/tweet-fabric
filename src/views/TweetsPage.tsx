@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { useGetTweetsQuery } from "../redux/tweetsApi";
 import { IUser } from "../assets/interfaces";
@@ -12,51 +12,27 @@ export default function TweetsPage() {
   const ITEMS_PER_PAGE = 12; // Number of items to show per page
   const { data: users, isLoading } = useGetTweetsQuery();
 
-  const [itemsPerPage] = useState(ITEMS_PER_PAGE);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [itemsToShow, setItemsToShow] = useState<IUser[]>([]);
+  const [endIndex, setEndIdx] = useState(ITEMS_PER_PAGE);
   const [allItems, setAllItems] = useState<IUser[] | undefined>([]);
 
-  // const sortedUserCards: IUser[] | undefined = useMemo(() => {
-  //   const sortedCards: IUser[] | undefined = users?.slice();
-  //   sortedCards?.sort((a, b) => a.user.localeCompare(b.user));
+  const filteredCards = getFiltredCards(users);
 
-  //   return sortedCards;
-  // }, [users]);
-
-  // const sortedUser: IUser[] | undefined = useMemo(() => {
-  //   const sortedCards: IUser[] | undefined = users?.slice();
-  //   sortedCards?.sort((a, b) => b.followers - a.followers);
-
-  //   return sortedCards;
-  // }, [users]);
-
-  // slice the items array to show only the items for the current page
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
-
-  useEffect(() => {
-    const items = users?.slice(startIndex, endIndex);
-    if (!items) return;
-    setItemsToShow((prevItems) => {
-      items !== prevItems;
-      return [...prevItems, ...items];
-    });
-  }, [allItems, itemsPerPage, currentPage, startIndex, endIndex]);
+  const startIndex = 0;
 
   const handleClickLoadMoreBtn = () => {
-    setCurrentPage(currentPage + 1);
+    setEndIdx(endIndex + ITEMS_PER_PAGE);
   };
-  // if (users) {
-  const filteredCards = getFiltredCards(users);
 
   useEffect(() => {
     setAllItems(users);
   }, [users]);
-  // }
 
-  if (!allItems) {
-    return <div />;
+  if (!users) {
+    return (
+      <Box sx={{ my: "32px" }}>
+        <LinearProgress color="success" />
+      </Box>
+    );
   }
 
   return (
@@ -66,9 +42,7 @@ export default function TweetsPage() {
           {isLoading ? <CircularProgress color="success" size={20} /> : "TweetsPage"}
         </Typography>
       </Paper>
-
       <BasicSelect />
-
       <Box sx={{ my: "32px" }}>
         {isLoading ? (
           <LinearProgress color="success" />
@@ -76,7 +50,7 @@ export default function TweetsPage() {
           <Grid container rowSpacing={2} justifyContent="center" columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
             {users &&
               filteredCards &&
-              filteredCards.map((userItem: IUser) => (
+              filteredCards.slice(startIndex, endIndex).map((userItem: IUser) => (
                 <Grid item xs={8} sm={6} md={4} justifyContent="center" key={userItem.id}>
                   <UserCard
                     id={userItem.id}
@@ -92,7 +66,7 @@ export default function TweetsPage() {
         )}
       </Box>
 
-      {allItems.length > ITEMS_PER_PAGE && (
+      {users && allItems && allItems.length > ITEMS_PER_PAGE && (
         <Button
           variant="contained"
           color="success"

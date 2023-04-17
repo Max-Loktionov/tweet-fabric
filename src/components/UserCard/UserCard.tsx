@@ -1,22 +1,17 @@
-// import { Link, useLocation } from "react-router-dom";
-// import { useState } from "react";
 import { useUpdateFollowingMutation } from "../../redux/tweetsApi";
 import noImage from "../../img/ava.png";
+import logo from "../../img/logo.png";
 import formattedNumber from "../../helpers/formatted";
 import { IUser } from "../../assets/interfaces";
-import { Box, CircularProgress, Button } from "@mui/material";
+import { CircularProgress } from "@mui/material";
 import * as S from "./styles";
-
-// https://6439993fbd3623f1b9a428c7.mockapi.io/api/v1/:endpoint
 
 export default function UserCard({ id, user, tweets, followers, avatar, followed }: IUser) {
   const [updateFollowing, { isLoading }] = useUpdateFollowingMutation();
-  // const [isFollowing, setFollow] = useState(false);
   const shownFollowers = formattedNumber(followers);
 
   const handleClickFollow = async () => {
     if (followed) {
-      // deleteFollow(id)
       followers -= 1;
       followed = false;
       const body = {
@@ -27,7 +22,6 @@ export default function UserCard({ id, user, tweets, followers, avatar, followed
       await updateFollowing(body);
       return;
     }
-    // addFollow(id)
     followers += 1;
     followed = true;
     const body = {
@@ -42,6 +36,7 @@ export default function UserCard({ id, user, tweets, followers, avatar, followed
   return (
     <>
       <S.CardWrapper>
+        <S.Logo src={logo} alt="GO IT" />
         <S.ImgContainer />
         <S.Line />
         <S.ImgWrapper>{avatar ? <S.Poster src={`${avatar}`} alt={user} /> : <S.Poster src={noImage} alt={user} />}</S.ImgWrapper>
