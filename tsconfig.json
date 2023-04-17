@@ -18,10 +18,14 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "baseUrl": "./src",
     "outDir": "./dist",
     "rootDir": "src",
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "baseUrl": ".",
+    "paths": {
+      "@project/app/modules/*": ["src/modules/*"],
+      "@project/server/data/*": ["server/src/json/*"]
+    }
   },
   "include": ["src"],
   "exclude": ["node_modules", "dist", "**/*.spec.ts"],
