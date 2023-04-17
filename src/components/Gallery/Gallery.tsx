@@ -1,7 +1,4 @@
 import { Box, ImageList, ImageListItem, ImageListItemBar } from "@mui/material";
-// import ImageList from "@mui/material/ImageList";
-// import ImageListItem from "@mui/material/ImageListItem";
-// import ImageListItemBar from "@mui/material/ImageListItemBar";
 
 export default function Gallery() {
   return (
