@@ -18,7 +18,7 @@ export default function App() {
         }
       >
         <Routes>
-          <Route path="/tweet-fabric" element={<Layout />}>
+          <Route path="/tweet-fabric/" element={<Layout />}>
             <Route index element={<HomePage />} />
             <Route path="/tweets" element={<TweetsPage />} />
 
