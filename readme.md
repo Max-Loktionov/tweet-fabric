@@ -2,7 +2,7 @@
 
 <h1 align="center" > Tweebric</h1>
 
-[DEMO](https://max-loktionov.github.io/tweet-fabric/)
+[LIVEpage](https://max-loktionov.github.io/tweet-fabric/)
 
 ![](src/img/picto.png)
 
