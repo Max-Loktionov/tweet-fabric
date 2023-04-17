@@ -10,9 +10,6 @@
 
 is social network that allows you to be close to your friends and share a piece of life with them
 
-`````
-
-
 <img alt="npm type definitions" src="https://img.shields.io/npm/types/typescript?color=green&label=dependencies"><img alt="npm type definitions" src="https://img.shields.io/npm/types/react?color=green&label=dependencies"><img alt="npm type definitions" src="https://img.shields.io/npm/types/react-router-dom?color=green&label=dependencies"><img alt="npm type definitions" src="https://img.shields.io/npm/types/vite?color=green&label=dependencies">
 
 Make sure you have an LTS version of Node.js installed on your computer. Download and install if it is necessary.
@@ -35,4 +32,4 @@ command will boot up a local static web server that serves the files from dist a
  http://localhost:4173. It's an easy way to check if the production build looks OK in your local environment.
 
 
-`````
+````
