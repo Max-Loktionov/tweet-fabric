@@ -20,12 +20,7 @@
     "noEmit": true,
     "outDir": "./dist",
     "rootDir": "src",
-    "jsx": "react-jsx",
-    "baseUrl": ".",
-    "paths": {
-      "@project/app/modules/*": ["src/modules/*"],
-      "@project/server/data/*": ["server/src/json/*"]
-    }
+    "jsx": "react-jsx"
   },
   "include": ["src"],
   "exclude": ["node_modules", "dist", "**/*.spec.ts"],
