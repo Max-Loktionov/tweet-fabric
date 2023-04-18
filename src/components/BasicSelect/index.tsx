@@ -13,6 +13,14 @@ const options: SelectOption[] = [
   { value: "following", label: "following" },
 ];
 
+const stylesForSelect = {
+  height: "32px",
+  margin: "20px",
+  color: "#673AB7",
+  outline: "1px solid #FFEB3B",
+  border: "1px solid #9E9E9E",
+  backgroundColor: "#ebd8ff",
+};
 export default function BasicSelect() {
   const dispatch = useDispatch();
   const selectedOption = useSelector(getFiltred);
@@ -24,7 +32,7 @@ export default function BasicSelect() {
   return (
     <Box sx={{ minWidth: 120, p: "24px" }}>
       <label htmlFor="select-option">Select an option: </label>
-      <select id="select-option" value={selectedOption} onChange={handleOptionChange}>
+      <select style={stylesForSelect} id="select-option" value={selectedOption} onChange={handleOptionChange}>
         <option value="">--Select--</option>
         {options.map((option) => (
           <option key={option.value} value={option.value}>
