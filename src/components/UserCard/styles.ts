@@ -19,6 +19,8 @@ export const Logo = styled("img")`
   position: absolute;
   top: 20px;
   left: 20px;
+  height: 22px;
+  width: 76px;
 `;
 
 export const ImgWrapper = styled(Box)(() => ({

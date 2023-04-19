@@ -44,6 +44,4 @@ Local: http://127.0.0.1:4173/tweet-fabric/
 command will boot up a local static web server that serves the files from dist at
  http://localhost:4173. It's an easy way to check if the production build looks OK in your local environment.
 
-
-
 ````

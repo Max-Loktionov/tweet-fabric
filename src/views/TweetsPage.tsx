@@ -47,7 +47,7 @@ export default function TweetsPage() {
         {isLoading ? (
           <LinearProgress color="success" />
         ) : (
-          <Grid container rowSpacing={2} justifyContent="center" columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+          <Grid container rowSpacing={2} justifyContent="center" columnSpacing={{ xs: 1, sm: 2, lg: 3 }}>
             {users &&
               filteredCards &&
               filteredCards.slice(startIndex, endIndex).map((userItem: IUser) => (
@@ -80,7 +80,7 @@ export default function TweetsPage() {
       )}
 
       <Box component="span" sx={{ p: 2, m: 8, backgroundColor: "gray", display: "inline-block" }}>
-        <NavLink to={"/"}>
+        <NavLink to={"/tweet-fabric/"}>
           <HomeIcon fontSize="large" color="secondary" />
         </NavLink>
       </Box>
