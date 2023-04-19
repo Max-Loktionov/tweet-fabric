@@ -80,7 +80,7 @@ export default function TweetsPage() {
       )}
 
       <Box component="span" sx={{ p: 2, m: 8, backgroundColor: "gray", display: "inline-block" }}>
-        <NavLink to={"/tweet-fabric/"}>
+        <NavLink to={"/"}>
           <HomeIcon fontSize="large" color="secondary" />
         </NavLink>
       </Box>

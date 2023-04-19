@@ -39,7 +39,7 @@ Local: http://127.0.0.1:4173/tweet-fabric/
 
 ```
 npm run build
-npm run preview`
+npm run preview
 ```
 
 command will boot up a local static web server that serves the files from dist at
