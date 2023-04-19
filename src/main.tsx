@@ -12,7 +12,7 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <Provider store={store}>
       <ThemeProvider theme={theme}>
-        <BrowserRouter basename="/tweet-fabric">
+        <BrowserRouter basename="/tweet-fabric/">
           <App />
         </BrowserRouter>
       </ThemeProvider>

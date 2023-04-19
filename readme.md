@@ -2,7 +2,9 @@
 
 <h1 align="center" > Tweebric</h1>
 
-to visit LIVEpage[Click here](https://max-loktionov.github.io/tweet-fabric/)
+to visit LIVEpage [Click here](https://max-loktionov.github.io/tweet-fabric/)
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/fa7488c0-0f3b-4ed0-9fc1-7ba474861b79/deploy-status)](https://app.netlify.com/sites/tweebric/deploys)
 
 ![](src/img/picto.png)
 
