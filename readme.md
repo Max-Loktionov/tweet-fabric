@@ -18,21 +18,29 @@ Make sure you have an LTS version of Node.js installed on your computer. Downloa
 
 Clone this repo.
 
-`git clone https://github.com/Max-Loktionov/tweet-fabric.git`
+```
+git clone https://github.com/Max-Loktionov/tweet-fabric.git
+```
 
 Install the basic project dependencies with the command
 
-`npm install`
+```
+npm install
+```
 
 Start development mode by running the command
 
-`npm run dev`
+```
+npm run dev
+```
 
 and you start this pproject locally
 Local: http://127.0.0.1:4173/tweet-fabric/
 
-``npm run build`
-`npm run preview`
+```
+npm run build
+npm run preview`
+```
 
 command will boot up a local static web server that serves the files from dist at
 http://localhost:4173. It's an easy way to check if the production build looks OK in your local environment.
