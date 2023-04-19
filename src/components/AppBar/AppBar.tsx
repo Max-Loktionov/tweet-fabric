@@ -78,7 +78,7 @@ export default function MenuAppBar() {
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             <NAVLink to="/">Home</NAVLink>
-            <NAVLink to="/tweets">Tweets</NAVLink>
+            <NAVLink to="tweets">Tweets</NAVLink>
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
