@@ -14,7 +14,7 @@ is social network that allows you to be close to your friends and share a piece 
 
 ---
 
-<img alt="npm type definitions" src="https://img.shields.io/npm/types/typescript?color=green&label=dependencies">
+<img alt="npm type definitions" src="https://img.shields.io/npm/types/typescript?color=green&label=dependencies"> <img alt="npm type definitions" src="https://img.shields.io/badge/dependencies-react-green">
 
 Make sure you have an LTS version of Node.js installed on your computer. Download and install if it is necessary.
 
@@ -37,7 +37,7 @@ npm run dev
 ```
 
 and you start this pproject locally
-Local: http://127.0.0.1:4173/tweet-fabric/
+Local: http://127.0.0.1:5173/tweet-fabric/
 
 ```
 npm run build
