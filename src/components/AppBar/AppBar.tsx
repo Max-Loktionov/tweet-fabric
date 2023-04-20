@@ -51,10 +51,10 @@ export default function MenuAppBar() {
               }}
             >
               <MenuItem onClick={handleCloseNavMenu}>
-                <NAVLink to="/tweet-fabric/">Home</NAVLink>
+                <NAVLink to="/">Home</NAVLink>
               </MenuItem>
               <MenuItem onClick={handleCloseNavMenu}>
-                <NAVLink to="/tweet-fabric/tweets">Tweets</NAVLink>
+                <NAVLink to="tweets">Tweets</NAVLink>
               </MenuItem>
             </Menu>
           </Box>
