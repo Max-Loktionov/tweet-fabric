@@ -14,7 +14,7 @@ is social network that allows you to be close to your friends and share a piece 
 
 ---
 
-<img alt="npm type definitions" src="https://img.shields.io/npm/types/typescript?color=green&label=dependencies"> <img alt="npm type definitions" src="https://img.shields.io/badge/dependencies-react-green">
+<img alt="npm type definitions" src="https://img.shields.io/npm/types/typescript?color=green&label=dependencies"> <img alt="npm type definitions" src="https://img.shields.io/badge/dependencies-react-green"> <img alt="npm type definitions" src="https://img.shields.io/badge/dependencies-react--router--dom-yellowgreen"> <img alt="npm type definitions" src="https://img.shields.io/badge/dependencies-react--redux-yellowgreen">
 
 Make sure you have an LTS version of Node.js installed on your computer. Download and install if it is necessary.
 
