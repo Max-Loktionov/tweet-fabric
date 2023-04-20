@@ -49,18 +49,24 @@ export const ImgContainer = styled(Box)`
   height: 168px;
   margin-left: 36px;
   margin-right: 36px;
+  margin-bottom: 88px;
   background-image: url(${picto});
   background-size: contain;
   background-repeat: no-repeat;
+  &::before {
+    content: "";
+    position: absolute;
+    top: 47%;
+    right: 0%;
+    transform: translate(0%, -50%);
+    width: 100%;
+    height: 8px;
+    background-color: #ebd8ff;
+    box-shadow: 0px 3.43693px 3.43693px rgba(0, 0, 0, 0.06), inset 0px -1.71846px 3.43693px #ae7be3, inset 0px 3.43693px 2.5777px #fbf8ff;
+    z-index: 0;
+  }
 `;
 
-export const Line = styled("div")`
-  height: 8px;
-  margin-top: 18px;
-  margin-bottom: 58px;
-  background: #ebd8ff;
-  box-shadow: 0px 3.43693px 3.43693px rgba(0, 0, 0, 0.06), inset 0px -1.71846px 3.43693px #ae7be3, inset 0px 3.43693px 2.5777px #fbf8ff;
-`;
 export const Text = styled(Typography)`
   margin: 0 auto 12px auto;
   padding: 4px;

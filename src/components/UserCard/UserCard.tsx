@@ -38,7 +38,6 @@ export default function UserCard({ id, user, tweets, followers, avatar, followed
       <S.CardWrapper>
         <S.Logo src={logo} alt="GO IT" />
         <S.ImgContainer />
-        <S.Line />
         <S.ImgWrapper>{avatar ? <S.Poster src={`${avatar}`} alt={user} /> : <S.Poster src={noImage} alt={user} />}</S.ImgWrapper>
         <S.Text>{tweets} tweets</S.Text>
         <S.Text sx={{ mb: "22px" }}>{shownFollowers} followers</S.Text>
