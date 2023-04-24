@@ -2,7 +2,7 @@ import { Box, ImageList, ImageListItem, ImageListItemBar } from "@mui/material";
 
 export default function Gallery() {
   return (
-    <Box sx={{ width: 600, height: 450, overflowY: "scroll" }}>
+    <Box sx={{ width: 640, height: 450, overflowY: "scroll" }}>
       <ImageList variant="masonry" cols={3} gap={8}>
         {itemData.map((item) => (
           <ImageListItem key={item.img}>
