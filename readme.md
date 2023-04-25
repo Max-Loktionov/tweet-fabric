@@ -4,11 +4,13 @@
 
 to visit LIVE gh-page [Click here](https://max-loktionov.github.io/tweet-fabric/)
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/fa7488c0-0f3b-4ed0-9fc1-7ba474861b79/deploy-status)](https://app.netlify.com/sites/tweebric/deploys)
-
 ![](src/img/picto.png)
 
 to visit LIVE netlify-page [Click here](https://tweebric.netlify.app)
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/fa7488c0-0f3b-4ed0-9fc1-7ba474861b79/deploy-status)](https://app.netlify.com/sites/tweebric/deploys)
+
+---
 
 ## **_Tweebric_** -
 
